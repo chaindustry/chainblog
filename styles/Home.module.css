@@ -4,4 +4,43 @@
   margin: 90px 0;
   color: #281451;
   line-height: 38px;
+  max-width: 900px;
+}
+.post_container {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 700px) {
+  .post_container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  .intro {
+    font-size: 35px;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  .intro {
+    font-size: 40px;
+    margin: 120px 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .intro {
+    font-size: 49px;
+    line-height: 55px;
+  }
+  .post_container {
+    gap: 35px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .intro {
+    font-size: 53px;
+    line-height: 63px;
+  }
 }

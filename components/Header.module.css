@@ -16,3 +16,21 @@
 .links a:first-child {
   margin-right: 13px;
 }
+
+@media screen and (min-width: 700px) {
+  .logo {
+    width: 200px;
+    height: 90px;
+  }
+  .header {
+    padding-top: 24px;
+  }
+}
+@media screen and (min-width: 901px) {
+  .header {
+    padding-top: 30px;
+  }
+  .logo {
+    width: 250px;
+  }
+}

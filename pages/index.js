@@ -1,23 +1,45 @@
+import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { baseUrl } from "../baseUrl";
 import Card from "../components/Card";
 import classes from "../styles/Home.module.css";
 
-export default function Home() {
-  const posts = [
-    {
-      title: "First Chaindustry post: This is a test, test test test test",
-      img: "test.JPG",
-      date: new Date().toISOString(),
-      tags: [],
-    },
-    {
-      title: "Second Chaindustry post: This is a test, test test test test",
-      img: "emma.JPG",
-      date: new Date().toISOString(),
-      tags: ["Web3", "Finance", "Crypto"],
-    },
-  ];
+export default function Home(props) {
+  console.log(props.posts, "POsts");
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    setPosts(
+      props.posts.data.map((p) => {
+        console.log(p?.img);
+        return {
+          ...p.attributes,
+          id: p.id,
+          img: p?.attributes?.img
+            ? p?.attributes?.img?.data?.attributes?.url
+            : null,
+        };
+      })
+    );
+  }, []);
+  // console.log(posts);
+  // const posts = [
+  //   {
+  //     title: "First Chaindustry post: This is a test, test test test test",
+  //     img: "test.JPG",
+  //     date: new Date().toISOString(),
+  //     tags: [],
+  //     id: 1,
+  //   },
+  //   {
+  //     title: "Second Chaindustry post: This is a test, test test test test",
+  //     img: "emma.JPG",
+  //     date: new Date().toISOString(),
+  //     tags: ["Web3", "Finance", "Crypto"],
+  //     id: 2,
+  //   },
+  // ];
   return (
     <div className={classes.container}>
       <Head>
@@ -30,12 +52,34 @@ export default function Home() {
         <section className={classes.intro}>
           Chaindustry is a goal, is a goal, is a goal, is a goal.
         </section>
-        <div>
-          {posts.map((p, id) => {
-            return <Card key={id} {...p} />;
-          })}
+        <div className={classes.post_container}>
+          {posts
+            .sort(
+              (a, b) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+            )
+            .map((p, id) => {
+              return <Card key={id} {...p} />;
+            })}
         </div>
       </main>
     </div>
   );
 }
+
+export const getStaticProps = async () => {
+  const res = await axios.get(`${baseUrl}/api/posts?populate=*`);
+  const posts = res.data;
+  // const posts = res.data.data.map((p) => {
+  //   return {
+  //     ...p.attributes,
+  //     id: p.id,
+  //   };
+  // });
+  return {
+    props: {
+      posts,
+    },
+  };
+};

@@ -8,11 +8,15 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "proxy": "http://localhost:1337",
   "dependencies": {
+    "axios": "^0.27.2",
+    "markdown-it": "^13.0.1",
     "moment": "^2.29.3",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "words-to-time-converter": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "8.18.0",

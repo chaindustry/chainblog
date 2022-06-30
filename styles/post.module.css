@@ -1,0 +1,58 @@
+.container a {
+  color: #e25f81;
+}
+.container h1 {
+  font-weight: 500;
+}
+.img_con {
+  position: relative;
+  height: 183px;
+  margin-top: 30px;
+}
+.img {
+  border-radius: 55px !important;
+  object-position: top !important;
+}
+.container {
+  padding: 30px 12px;
+}
+.top {
+  display: flex;
+  gap: 0.5em;
+  color: #a93655;
+}
+.tag_container {
+  display: flex;
+  gap: 0.5em;
+}
+.tag {
+  text-transform: capitalize;
+  background-color: #e3fcf7;
+  color: #006cfa;
+  padding: 2.5px 6px;
+  border: solid 2px;
+  border-radius: 6px;
+  display: inline-flex;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13px;
+  vertical-align: middle;
+}
+.post_content p {
+  color: #1e0e00;
+}
+.container h1,
+.container h2,
+.container h3,
+.container h4,
+.container h5,
+.container h6 {
+  color: #281451;
+}
+.container img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 10px;
+}
