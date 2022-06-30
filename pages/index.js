@@ -47,7 +47,7 @@ export default function Home(props) {
           <meta name="twitter:image" content={fullImgPath} />
           <meta name="image" content={fullImgPath} />
         </>
-        <meta property="og:type" content="article" />
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
