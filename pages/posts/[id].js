@@ -4,48 +4,60 @@ import { baseUrl } from "../../baseUrl";
 import classes from "../../styles/post.module.css";
 import moment from "moment";
 import Image from "next/image";
+import Seo from "../../components/Seo";
 const Markdown = require("markdown-it");
 const Post = ({ post }) => {
   post = { ...post, img: post?.img ? post.img?.data?.attributes?.url : null };
-  const md = new Markdown();
+  const md = new Markdown({
+    html: true,
+  });
   const derivedHtml = md.render(post.content);
   console.log(post);
   return (
-    <article className={classes.container}>
-      <header>
-        <div className={classes.top}>
-          <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
-          {post?.tags && (
-            <div className={classes.tag_container}>
-              {post.tags.map((t, id) => (
-                <span className={classes.tag} key={`chaindustry_tags_${id}`}>
-                  {t}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-        {/* {post.updatedAt !== post.createdAt && (
+    <>
+      <Seo
+        metaTitle={post?.title}
+        metaDescription={post?.description}
+        article={post?.description}
+        shareImage={post?.img ? post.img?.data?.attributes?.url : null}
+      />
+
+      <article className={classes.container}>
+        <header>
+          <div className={classes.top}>
+            <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
+            {post?.tags && (
+              <div className={classes.tag_container}>
+                {post.tags.map((t, id) => (
+                  <span className={classes.tag} key={`chaindustry_tags_${id}`}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* {post.updatedAt !== post.createdAt && (
           <p>{moment(post.updatedAt).format("MMM DD, YYYY [at] hh:mm:a")}</p>
         )} */}
-        <h1>{post.title}</h1>
-        <p>{post.description}</p>
-      </header>
-      {post.img && (
-        <div className={classes.img_con}>
-          <Image
-            className={classes.img}
-            src={`${baseUrl}${post.img}`}
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-      )}
-      <section
-        className={classes.post_content}
-        dangerouslySetInnerHTML={{ __html: derivedHtml }}
-      />
-    </article>
+          <h1>{post.title}</h1>
+          <p>{post.description}</p>
+        </header>
+        {post.img && (
+          <div className={classes.img_con}>
+            <Image
+              className={classes.img}
+              src={`${baseUrl}${post.img}`}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        )}
+        <section
+          className={classes.post_content}
+          dangerouslySetInnerHTML={{ __html: derivedHtml }}
+        />
+      </article>
+    </>
   );
 };
 
