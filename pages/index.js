@@ -24,12 +24,28 @@ export default function Home(props) {
     );
   }, []);
 
+  const description =
+    "Chaindustry is a DoToEarn network offering value and digital services to it's users and partners.";
+  const fullImgPath =
+    "https://firebasestorage.googleapis.com/v0/b/cashio-1ccdd.appspot.com/o/Rectangle%2059.png?alt=media&token=5adb143c-0f4f-4157-958a-cb20a0b86993";
   return (
     <div className={classes.container}>
       <Head>
         <title>Chaindustry Insider</title>
         <meta name="description" content="Blog at Chaindustry" />
         <link rel="icon" href="/favicon.ico" />
+        <>
+          <meta name="description" content={description} />
+          <meta property="og:description" content={description} />
+          <meta name="twitter:description" content={description} />
+        </>
+        <>
+          <meta property="og:image" content={fullImgPath} />
+          <meta name="twitter:image" content={fullImgPath} />
+          <meta name="image" content={fullImgPath} />
+        </>
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <main>
