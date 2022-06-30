@@ -50,7 +50,9 @@ const Post = ({ post }) => {
 };
 
 export default Post;
-export const getStaticProps = async ({ params }) => {
+
+export const getServerSideProps = async ({ params }) => {
+  console.log(params, "Params");
   const res = await axios.get(`${baseUrl}/api/posts/${params.id}?populate=*`);
   const data = res.data.data;
   const post = {
@@ -58,29 +60,49 @@ export const getStaticProps = async ({ params }) => {
     id: data.id,
   };
 
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
   return {
     props: {
       post: post,
     },
-    revalidate: 10,
   };
 };
-export const getStaticPaths = async () => {
-  const posts = await axios.get(`${baseUrl}/api/posts`);
-  const mapped = posts.data.data.map((p) => {
-    return {
-      ...p.attributes,
-      id: p.id,
-    };
-  });
-  const paths = mapped.map((p) => {
-    return {
-      params: { id: p.id.toString() },
-    };
-  });
-  return {
-    paths,
+// export const getStaticProps = async ({ params }) => {
+//   const res = await axios.get(`${baseUrl}/api/posts/${params.id}?populate=*`);
+//   const data = res.data.data;
+//   const post = {
+//     ...data.attributes,
+//     id: data.id,
+//   };
 
-    fallback: "blocking",
-  };
-};
+//   return {
+//     props: {
+//       post: post,
+//     },
+//     revalidate: 10,
+//   };
+// };
+
+// export const getStaticPaths = async () => {
+//   const posts = await axios.get(`${baseUrl}/api/posts`);
+//   const mapped = posts.data.data.map((p) => {
+//     return {
+//       ...p.attributes,
+//       id: p.id,
+//     };
+//   });
+//   const paths = mapped.map((p) => {
+//     return {
+//       params: { id: p.id.toString() },
+//     };
+//   });
+//   return {
+//     paths,
+
+//     fallback: "blocking",
+//   };
+// };
