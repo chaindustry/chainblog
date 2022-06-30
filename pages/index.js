@@ -23,7 +23,7 @@ export default function Home(props) {
       })
     );
   }, []);
-
+  const title = "The Chaindustry Insider";
   const description =
     "Chaindustry is a DoToEarn network offering value and digital services to it's users and partners.";
   const fullImgPath =
@@ -31,8 +31,10 @@ export default function Home(props) {
   return (
     <div className={classes.container}>
       <Head>
-        <title>Chaindustry Insider</title>
+        <title>{title}</title>
         <meta name="description" content="Blog at Chaindustry" />
+        <meta property="og:title" content={title} />
+        <meta name="twitter:title" content={title} />
         <link rel="icon" href="/favicon.ico" />
         <>
           <meta name="description" content={description} />
