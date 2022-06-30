@@ -27,17 +27,6 @@
 }
 .tag {
   text-transform: capitalize;
-  background-color: #e3fcf7;
-  color: #006cfa;
-  padding: 2.5px 6px;
-  border: solid 2px;
-  border-radius: 6px;
-  display: inline-flex;
-  text-align: center;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 13px;
-  vertical-align: middle;
 }
 .post_content p {
   color: #1e0e00;
