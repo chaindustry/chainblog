@@ -40,8 +40,8 @@ const Post = ({ post }) => {
           {/* {post.updatedAt !== post.createdAt && (
           <p>{moment(post.updatedAt).format("MMM DD, YYYY [at] hh:mm:a")}</p>
         )} */}
-          <h1>{post.title}</h1>
-          <p>{post.description}</p>
+          <h1 className={classes.title}>{post.title}</h1>
+          <p className={classes.desc}>{post.description}</p>
         </header>
         {post.img && (
           <div className={classes.img_con}>

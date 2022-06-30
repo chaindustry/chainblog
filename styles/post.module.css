@@ -1,8 +1,16 @@
 .container a {
   color: #e25f81;
 }
-.container h1 {
+.container .title {
   font-weight: 500;
+  font-size: 28px;
+  margin: 1.4em 0;
+  line-height: 34px;
+}
+.desc {
+  font-size: 19px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #61427a;
 }
 .img_con {
   position: relative;
@@ -14,7 +22,7 @@
   object-position: top !important;
 }
 .container {
-  padding: 30px 12px;
+  padding: 30px 14.7px;
 }
 .top {
   display: flex;
