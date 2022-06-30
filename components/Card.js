@@ -34,8 +34,8 @@ const Card = ({ title, img, createdAt, tags, id, content }) => {
             <div className={classes.read_time}>
               <div className={classes.bull} />{" "}
               {minRead < 1
-                ? `${secRead} secs read`
-                : `${Math.floor(minRead)} min${minRead > 1 ? "s" : ""} read`}
+                ? `${Math.floor(secRead)} sec${secRead > 1.9 ? "s" : ""} read`
+                : `${Math.floor(minRead)} min${minRead > 1.9 ? "s" : ""} read`}
             </div>
           </div>
           {tags && tags.length > 0 && (
