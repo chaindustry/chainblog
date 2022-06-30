@@ -1,6 +1,8 @@
 import Head from "next/head";
+import { baseUrl } from "../baseUrl";
 
 const Seo = (fullSeo) => {
+  const fullImgPath = `${baseUrl}${fullSeo.shareImage}`;
   return (
     <Head>
       {fullSeo.metaTitle && (
@@ -19,9 +21,9 @@ const Seo = (fullSeo) => {
       )}
       {fullSeo.shareImage && (
         <>
-          <meta property="og:image" content={fullSeo.shareImage} />
-          <meta name="twitter:image" content={fullSeo.shareImage} />
-          <meta name="image" content={fullSeo.shareImage} />
+          <meta property="og:image" content={fullImgPath} />
+          <meta name="twitter:image" content={fullImgPath} />
+          <meta name="image" content={fullImgPath} />
         </>
       )}
       {fullSeo.article && <meta property="og:type" content="article" />}

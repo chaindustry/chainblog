@@ -7,19 +7,20 @@ import Image from "next/image";
 import Seo from "../../components/Seo";
 const Markdown = require("markdown-it");
 const Post = ({ post }) => {
-  post = { ...post, img: post?.img ? post.img?.data?.attributes?.url : null };
+  const post_image = post?.img ? post.img?.data?.attributes?.url : null;
+  post = { ...post, img: post_image };
   const md = new Markdown({
     html: true,
   });
   const derivedHtml = md.render(post.content);
-  console.log(post);
+  console.log(post_image, "Post image");
   return (
     <>
       <Seo
         metaTitle={post?.title}
         metaDescription={post?.description}
         article={post?.description}
-        shareImage={post?.img ? post.img?.data?.attributes?.url : null}
+        shareImage={post_image}
       />
 
       <article className={classes.container}>
