@@ -23,23 +23,7 @@ export default function Home(props) {
       })
     );
   }, []);
-  // console.log(posts);
-  // const posts = [
-  //   {
-  //     title: "First Chaindustry post: This is a test, test test test test",
-  //     img: "test.JPG",
-  //     date: new Date().toISOString(),
-  //     tags: [],
-  //     id: 1,
-  //   },
-  //   {
-  //     title: "Second Chaindustry post: This is a test, test test test test",
-  //     img: "emma.JPG",
-  //     date: new Date().toISOString(),
-  //     tags: ["Web3", "Finance", "Crypto"],
-  //     id: 2,
-  //   },
-  // ];
+
   return (
     <div className={classes.container}>
       <Head>
@@ -50,7 +34,7 @@ export default function Home(props) {
 
       <main>
         <section className={classes.intro}>
-          Chaindustry is a goal, is a goal, is a goal, is a goal.
+          {"What's new for Chaindustry"}
         </section>
         <div className={classes.post_container}>
           {posts
