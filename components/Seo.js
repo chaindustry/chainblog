@@ -5,6 +5,7 @@ const Seo = (fullSeo) => {
   const fullImgPath = `${baseUrl}${fullSeo.shareImage}`;
   return (
     <Head>
+      <meta property="og:url" content="https://chainblog.vercel.app" />
       {fullSeo.metaTitle && (
         <>
           <title>{fullSeo.metaTitle}</title>
