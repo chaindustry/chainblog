@@ -21,6 +21,7 @@ const Post = ({ post }) => {
         metaDescription={post?.description}
         article={post?.description}
         shareImage={post_image}
+        id={post.id}
       />
 
       <article className={classes.container}>

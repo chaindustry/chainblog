@@ -3,9 +3,10 @@ import { baseUrl } from "../baseUrl";
 
 const Seo = (fullSeo) => {
   const fullImgPath = `${baseUrl}${fullSeo.shareImage}`;
+  const url = `https://chainblog.vercel.app/posts/${fullSeo?.id}`;
   return (
     <Head>
-      <meta property="og:url" content="https://chainblog.vercel.app" />
+      <meta property="og:url" content={url} />
       {fullSeo.metaTitle && (
         <>
           <title>{fullSeo.metaTitle}</title>
