@@ -1,16 +1,17 @@
 .container a {
   color: #e25f81;
 }
-.container .title {
-  font-weight: 500;
-  font-size: 28px;
+.title {
+  font-weight: 400;
+  font-size: 30px;
   margin: 1.23em 0;
   line-height: 34px;
   color: #281451;
+  /* font-family: ; */
 }
 .desc {
   font-size: 17px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
   color: #61427a;
 }
 .img_con {
@@ -58,4 +59,24 @@
   width: 100%;
   border-radius: 20px;
   margin-top: 10px;
+}
+@media screen and (min-width: 767px) {
+  .container {
+    padding: 54px 3.8vmin;
+  }
+}
+
+.img_con {
+  height: 400px;
+}
+.desc {
+  font-size: 22px;
+}
+.title {
+  font-size: 48px;
+  line-height: 54px;
+  margin-top: 23px;
+  margin-bottom: 27px;
+}
+.img {
 }
