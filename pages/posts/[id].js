@@ -5,6 +5,7 @@ import classes from "../../styles/post.module.css";
 import moment from "moment";
 import Image from "next/image";
 import Seo from "../../components/Seo";
+import Script from "next/script";
 const Markdown = require("markdown-it");
 const Post = ({ post }) => {
   const post_image = post?.img ? post.img?.data?.attributes?.url : null;
