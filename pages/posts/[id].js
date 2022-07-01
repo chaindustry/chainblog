@@ -16,6 +16,15 @@ const Post = ({ post }) => {
   console.log(post_image, "Post image");
   return (
     <>
+      <Script
+        strategy="afterInteractive"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7379638141020568"
+        crossorigin="anonymous"
+      />
       <Seo
         metaTitle={post?.title}
         metaDescription={post?.description}

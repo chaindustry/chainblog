@@ -8,15 +8,7 @@ const Seo = (fullSeo) => {
   return (
     <Head>
       <meta property="og:url" content={url} />
-      <Script
-        strategy="afterInteractive"
-        onError={(e) => {
-          console.error("Script failed to load", e);
-        }}
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7379638141020568"
-        crossorigin="anonymous"
-      />
+
       {fullSeo.metaTitle && (
         <>
           <title>{fullSeo.metaTitle}</title>
