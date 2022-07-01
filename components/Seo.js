@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Script from "next/script";
 import { baseUrl } from "../baseUrl";
 
 const Seo = (fullSeo) => {
@@ -7,11 +8,15 @@ const Seo = (fullSeo) => {
   return (
     <Head>
       <meta property="og:url" content={url} />
-      <script
+      <Script
+        strategy="afterInteractive"
+        onError={(e) => {
+          console.error("Script failed to load", e);
+        }}
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7379638141020568"
-        crossOrigin="anonymous"
-      ></script>
+        crossorigin="anonymous"
+      />
       {fullSeo.metaTitle && (
         <>
           <title>{fullSeo.metaTitle}</title>
