@@ -49,6 +49,11 @@ export default function Home(props) {
         </>
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7379638141020568"
+          crossOrigin="anonymous"
+        ></script>
       </Head>
 
       <main>
