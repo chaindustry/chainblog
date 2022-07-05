@@ -6,6 +6,8 @@ const nextConfig = {
       "localhost",
       "chainblog-backend.herokuapp.com",
       "chainblog-api.herokuapp.com",
+      // "chainblog-api.herokuapp.comhttps",
+      "res.cloudinary.com",
     ],
   },
 };

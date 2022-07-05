@@ -10,7 +10,7 @@
   /* font-family: ; */
 }
 .desc {
-  font-size: 19px;
+  font-size: 17.6px;
   /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
   color: #61427a;
 }
@@ -24,7 +24,7 @@
   object-position: top !important;
 }
 .container {
-  padding: 30px 14.7px;
+  padding: 30px 17.7px;
 }
 .top {
   display: flex;

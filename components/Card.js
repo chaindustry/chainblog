@@ -8,7 +8,7 @@ import { wordsToMinutes, wordsToSeconds } from "words-to-time-converter";
 const Card = ({ title, img, createdAt, tags, id, content }) => {
   const minRead = wordsToMinutes(content);
   const secRead = wordsToSeconds(content);
-  console.log(`${baseUrl}${img}`);
+  console.log(`${img}`);
   return (
     <Link href={`/posts/${id}`}>
       <section className={classes.card}>
@@ -17,7 +17,7 @@ const Card = ({ title, img, createdAt, tags, id, content }) => {
             <Image
               className={classes.post_img}
               layout="fill"
-              src={`${baseUrl}${img}`}
+              src={`${img}`}
               priority
               objectFit="cover"
               objectPosition="top"

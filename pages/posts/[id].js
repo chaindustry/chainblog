@@ -58,7 +58,7 @@ const Post = ({ post }) => {
           <div className={classes.img_con}>
             <Image
               className={classes.img}
-              src={`${baseUrl}${post.img}`}
+              src={`${post.img}`}
               layout="fill"
               objectFit="cover"
             />
