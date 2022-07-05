@@ -53,7 +53,7 @@ export default function Home(props) {
 
       <main>
         <section className={classes.intro}>
-          {"What's new for Chaindustry"}
+          {"What's new on Chaindustry"}
         </section>
         <div className={classes.post_container}>
           {posts
