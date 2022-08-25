@@ -39,7 +39,7 @@ export default function Home(props) {
           <meta property="og:description" content={description} />
           <meta name="twitter:description" content={description} />
         </>
-        <meta property="og:url" content="https://chainblog.vercel.app" />
+        <meta property="og:url" content="https://www.blog.chaindustry.io" />
         <>
           <meta property="og:image" content={fullImgPath} />
           <meta name="twitter:image" content={fullImgPath} />
@@ -47,6 +47,10 @@ export default function Home(props) {
         </>
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="google-site-verification"
+          content="kg2__dhEGnrztOnTcU5__JFGL2vzk8APpbt9CKiqQwM"
+        />
       </Head>
 
       <main>
