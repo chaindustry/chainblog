@@ -1,0 +1,27 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  overflow: hidden;
+  border-radius: 100px;
+}
+
+.avatar_img {
+  height: 35px;
+  width: 35px;
+  position: relative;
+  margin: 10px;
+}
+.comment {
+  color: #797979;
+  line-height: 30px;
+  font-size: 14px;
+}
+.comment_main {
+  padding: 20px 0;
+  border-bottom: solid 1px #d7d7d7;
+}
+.comment_main:last-child {
+  margin-bottom: 40px;
+}

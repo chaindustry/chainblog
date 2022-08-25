@@ -11,6 +11,8 @@
   "proxy": "http://localhost:1337",
   "dependencies": {
     "axios": "^0.27.2",
+    "framer-motion": "^7.2.1",
+    "js-cookie": "^3.0.1",
     "markdown-it": "^13.0.1",
     "moment": "^2.29.3",
     "next": "12.2.0",

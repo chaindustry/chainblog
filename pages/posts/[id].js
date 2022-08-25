@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
 import classes from "../../styles/post.module.css";
@@ -6,15 +6,111 @@ import moment from "moment";
 import Image from "next/image";
 import Seo from "../../components/Seo";
 import Script from "next/script";
+import authObserver from "../../utils/authObserver";
+import { useRouter } from "next/router";
+import { useGlobalContext } from "../../context/context";
+import Comments from "../../components/Comments";
+import Mention from "../../components/Mention";
 const Markdown = require("markdown-it");
-const Post = ({ post }) => {
+const Post = ({ post, commentRes }) => {
+  const [comments, setComments] = useState([]);
+  const [commenters, setCommenters] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [comment, setComment] = useState("");
   const post_image = post?.img ? post.img?.data?.attributes?.url : null;
   post = { ...post, img: post_image };
   const md = new Markdown({
     html: true,
   });
   const derivedHtml = md.render(post.content);
-  console.log(post_image, "Post image");
+  const router = useRouter();
+  const [openMention, setOpenMention] = useState(false);
+  const { user, auth } = useGlobalContext();
+  useEffect(() => {
+    const comments_ = post.comments?.data?.map((c) => {
+      return {
+        ...c.attributes,
+        id: c.id,
+      };
+    });
+    setComments(comments_);
+    const commenters_ = comments_.map((c) => c.user);
+    setCommenters(commenters_);
+    setFiltered(commenters_);
+    // console.log(post?.comments?.data, "Data of comme");
+  }, []);
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
+  const addComment = (e) => {
+    const postId = router.query.id;
+    e.preventDefault();
+    const url = `${baseUrl}/api/comments`;
+    axios
+      .post(url, {
+        data: {
+          post: parseInt(postId),
+          user: {
+            name: {
+              firstname: user?.firstname || null,
+              lastname: user?.lastname || null,
+            },
+            email: user?.email,
+            uid: user._id,
+            dp: user?.profile_picture || null,
+          },
+          comment: comment,
+          time_created: new Date().toISOString(),
+          comment_id: new Date().getTime().toString(),
+          commentId: new Date().getTime().toString(),
+        },
+      })
+      .then((resp) => {
+        refreshData();
+        console.log(resp.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const login = () => {
+    authObserver(null, router);
+  };
+  const checkForMention = (e) => {
+    const newArr = e.split("");
+    console.log(newArr);
+    if (
+      e.includes("@") &&
+      e.charAt(e.length - 1) === "@" &&
+      newArr.filter((a) => a === "@").length === 1
+    ) {
+      console.log("Initializing mention component...");
+      setOpenMention(true);
+    }
+    if (!e.includes("@")) {
+      setOpenMention(false);
+    }
+  };
+  const filterCommenters = (e) => {
+    const testCase = e.split("@").pop();
+    console.log(testCase, "tesy");
+    console.log(e, "e");
+    const filter = commenters.filter(
+      (c) =>
+        c?.name?.firstname?.toLowerCase().includes(testCase.toLowerCase()) ||
+        c?.name?.lastname?.toLowerCase().includes(testCase.toLowerCase())
+    );
+    setFiltered(filter);
+    console.log(
+      commenters.filter((c) =>
+        c.name?.firstname?.toLowerCase().includes(e.toLowerCase())
+      )
+    );
+    console.log(commenters.filter((c) => c?.firstname));
+    console.log(filter, "filter");
+  };
+
   return (
     <>
       <Script
@@ -68,6 +164,36 @@ const Post = ({ post }) => {
           className={classes.post_content}
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
+        <Comments comments={comments} />
+        {!auth && (
+          <div>
+            <div> Login to post a comment</div>
+            <button onClick={login}>Login Now</button>
+          </div>
+        )}
+        {auth && (
+          <form onSubmit={addComment} className={classes.comment_cont}>
+            <div className={classes.mention_cont}>
+              <Mention
+                openMention={openMention}
+                setOpenMention={setOpenMention}
+                commenters={filtered}
+              />
+            </div>
+            Comment as {user?.firstname}
+            <input
+              value={comment}
+              onChange={(e) => {
+                setComment(e.target.value);
+                checkForMention(e.target.value);
+                filterCommenters(e.target.value);
+              }}
+              placeholder="Add a comment"
+              required
+            />
+            <button type="submit">Submit</button>
+          </form>
+        )}
       </article>
     </>
   );
@@ -78,55 +204,31 @@ export default Post;
 export const getServerSideProps = async ({ params }) => {
   console.log(params, "Params");
   const res = await axios.get(`${baseUrl}/api/posts/${params.id}?populate=*`);
-  const data = res.data.data;
-  const post = {
-    ...data.attributes,
-    id: data.id,
-  };
-
-  if (!data) {
+  const comments = await axios.get(`${baseUrl}/api/comments?populate=*`);
+  const [postRes, commentRes] = await Promise.all([
+    res.data.data,
+    comments.data.data,
+  ]);
+  // const data = res.data.data;
+  console.log(postRes);
+  if (!postRes) {
     return {
       notFound: true,
     };
   }
+  const post = {
+    ...postRes.attributes,
+    id: postRes.id,
+  };
+  console.log(commentRes.filter((c) => c.attributes.post.id === params.id));
   return {
     props: {
-      post: post,
+      post,
+      commentRes,
+      // : commentRes?.filter(
+      //   (c) => c?.attributes?.post?.data?.id === params.id
+      // ),
+      // res: stringified,
     },
   };
 };
-// export const getStaticProps = async ({ params }) => {
-//   const res = await axios.get(`${baseUrl}/api/posts/${params.id}?populate=*`);
-//   const data = res.data.data;
-//   const post = {
-//     ...data.attributes,
-//     id: data.id,
-//   };
-
-//   return {
-//     props: {
-//       post: post,
-//     },
-//     revalidate: 10,
-//   };
-// };
-
-// export const getStaticPaths = async () => {
-//   const posts = await axios.get(`${baseUrl}/api/posts`);
-//   const mapped = posts.data.data.map((p) => {
-//     return {
-//       ...p.attributes,
-//       id: p.id,
-//     };
-//   });
-//   const paths = mapped.map((p) => {
-//     return {
-//       params: { id: p.id.toString() },
-//     };
-//   });
-//   return {
-//     paths,
-
-//     fallback: "blocking",
-//   };
-// };

@@ -1,0 +1,27 @@
+.container {
+  min-height: 40px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 17%);
+  padding: 4px;
+  position: absolute;
+  bottom: -10px;
+  font-family: "DM sans", sans-serif;
+}
+.option {
+  padding: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.avatar_img {
+  position: relative;
+  height: 28px;
+  width: 28px;
+  margin-right: 7px;
+  border-radius: 100px;
+  overflow: hidden;
+}

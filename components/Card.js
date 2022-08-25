@@ -11,7 +11,7 @@ const Card = ({ title, img, createdAt, tags, id, content }) => {
   console.log(`${img}`);
   return (
     <Link href={`/posts/${id}`}>
-      <section className={classes.card}>
+      <a className={classes.card}>
         <div className={classes.img}>
           {img ? (
             <Image
@@ -50,7 +50,7 @@ const Card = ({ title, img, createdAt, tags, id, content }) => {
           )}
           <div className={classes.post_title}>{title}</div>
         </div>
-      </section>
+      </a>
     </Link>
   );
 };
