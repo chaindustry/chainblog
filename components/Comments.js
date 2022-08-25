@@ -4,6 +4,7 @@ import classes from "./comments.module.css";
 const Comments = ({ comments }) => {
   const Avatar = ({ user }) => {
     const image = user?.dp || "/avatar.png";
+
     const name = user?.name;
     return (
       <div className={classes.avatar}>

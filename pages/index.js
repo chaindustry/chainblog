@@ -12,7 +12,6 @@ export default function Home(props) {
   useEffect(() => {
     setPosts(
       props.posts.data.map((p) => {
-        console.log(p?.img);
         return {
           ...p.attributes,
           id: p.id,

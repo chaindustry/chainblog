@@ -9,7 +9,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  console.log(router, "router_app");
+
   const query = router.query;
   const auth_token = query.auth_token;
   const AuthProvider = ({ children }) => {

@@ -13,7 +13,7 @@ const useGlobalContext = () => {
 };
 const AppProvider = ({ children }) => {
   const user = Cookies.get("user");
-  console.log("USer", user);
+  //   console.log("User", user);
   const defaultState = {
     user: user ? JSON.parse(user) : null,
     auth: user ? true : false,
