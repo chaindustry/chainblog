@@ -1,13 +1,12 @@
 import axios from "axios";
 import Head from "next/head";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import { baseUrl } from "../baseUrl";
 import Card from "../components/Card";
 import classes from "../styles/Home.module.css";
 
 export default function Home(props) {
-  console.log(props.posts, "POsts");
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     setPosts(
