@@ -7,7 +7,7 @@ const authObserver = (user, router) => {
       pathname:
         process.env.NODE_ENV !== "production"
           ? `${testpath}/login`
-          : "https://chaindustry.io/login",
+          : "https://chainapp.vercel.app/login",
       query: {
         referrer: "chainblog",
         return_url: `${
