@@ -3,8 +3,10 @@ import Script from "next/script";
 import { baseUrl } from "../baseUrl";
 
 const Seo = (fullSeo) => {
-  const fullImgPath = `${baseUrl}${fullSeo.shareImage}`;
-  const url = `https://chainblog.vercel.app/posts/${fullSeo?.id}`;
+  const fullImgPath = fullSeo.shareImage;
+  // const url = 'blocg.chaindustry.io'
+  const url = `https://www.blog.chaindustry.io/posts/${fullSeo?.id}`;
+  console.log(fullImgPath, "ff", fullSeo);
   return (
     <Head>
       <meta property="og:url" content={url} />
