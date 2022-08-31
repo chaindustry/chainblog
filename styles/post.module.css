@@ -66,6 +66,47 @@
 .mention_cont {
   position: relative;
 }
+.comment_cont {
+  border: solid 1px #d7d7d7;
+  padding: 10px;
+  border-radius: 5px;
+}
+.comment_cont textarea {
+  outline: none;
+  border: none;
+  font-family: "DM sans", sans-serif;
+  width: 100%;
+  border-bottom: solid 1px #d7d7d7;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+.comment_cont .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.comment_cont .bottom div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  color: #747474;
+  font-size: 18px;
+  cursor: pointer;
+}
+.bottom button {
+  padding: 10px 15px;
+  border: none;
+  background-color: #281451;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "DM sans", sans-serif;
+}
+.comment_cont:focus-within {
+  border-color: #2c024d;
+  box-shadow: 0 0 3px #2c024d;
+}
 .container img {
   object-fit: cover;
   width: 100%;

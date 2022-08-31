@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { baseUrl } from "../../baseUrl";
 import classes from "../../styles/post.module.css";
@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import { useGlobalContext } from "../../context/context";
 import Comments from "../../components/Comments";
 import Mention from "../../components/Mention";
+import { GoMention } from "react-icons/go";
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
@@ -26,6 +27,7 @@ const Post = ({ post, commentRes }) => {
   const router = useRouter();
   const [openMention, setOpenMention] = useState(false);
   const { user, auth } = useGlobalContext();
+  const [mentioned, setMentioned] = useState([]);
   useEffect(() => {
     const comments_ = post.comments?.data?.map((c) => {
       return {
@@ -81,9 +83,9 @@ const Post = ({ post, commentRes }) => {
     const newArr = e.split("");
     console.log(newArr);
     if (
-      e.includes("@") &&
-      e.charAt(e.length - 1) === "@" &&
-      newArr.filter((a) => a === "@").length === 1
+      e.includes("@")
+      // e.charAt(e.length - 1) === "@" &&
+      // newArr.filter((a) => a === "@").length === 1
     ) {
       console.log("Initializing mention component...");
       setOpenMention(true);
@@ -111,6 +113,10 @@ const Post = ({ post, commentRes }) => {
     console.log(filter, "filter");
   };
 
+  const inputRef = useRef(null);
+  const el = inputRef?.current;
+  const cursorPosition = el?.selectionStart;
+  console.log(cursorPosition, "Curs pos");
   return (
     <>
       <Script
@@ -172,27 +178,52 @@ const Post = ({ post, commentRes }) => {
           </div>
         )}
         {auth && (
-          <form onSubmit={addComment} className={classes.comment_cont}>
-            <div className={classes.mention_cont}>
-              <Mention
-                openMention={openMention}
-                setOpenMention={setOpenMention}
-                commenters={filtered}
-              />
-            </div>
+          <>
             Comment as {user?.firstname}
-            <input
-              value={comment}
-              onChange={(e) => {
-                setComment(e.target.value);
-                checkForMention(e.target.value);
-                filterCommenters(e.target.value);
-              }}
-              placeholder="Add a comment"
-              required
-            />
-            <button type="submit">Submit</button>
-          </form>
+            <form onSubmit={addComment} className={classes.comment_cont}>
+              <div className={classes.mention_cont}>
+                <Mention
+                  setComment={setComment}
+                  comment={comment}
+                  openMention={openMention}
+                  setOpenMention={setOpenMention}
+                  commenters={filtered}
+                  cursorPosition={cursorPosition}
+                  mentioned={mentioned}
+                  setMentioned={setMentioned}
+                />
+              </div>
+
+              <textarea
+                // contentEditable
+                ref={inputRef}
+                value={comment}
+                onChange={(e) => {
+                  setComment(e.target.value);
+                  checkForMention(e.target.value);
+                  filterCommenters(e.target.value);
+                }}
+                placeholder="Add a comment"
+                required
+              />
+              <div className={classes.bottom}>
+                <div
+                  onClick={() => {
+                    setOpenMention(!openMention);
+                    const output = [
+                      comment.slice(0, cursorPosition),
+                      "@",
+                      comment.slice(cursorPosition),
+                    ].join("");
+                    setComment(output);
+                  }}
+                >
+                  <GoMention />
+                </div>
+                <button type="submit">Send</button>
+              </div>
+            </form>
+          </>
         )}
       </article>
     </>

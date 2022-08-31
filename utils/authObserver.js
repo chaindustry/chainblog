@@ -1,6 +1,6 @@
 const authObserver = (user, router) => {
   const testpath = "http://localhost:3001";
-  const productionUrl = "https://blog.chaindustry.io";
+  const productionUrl = "https://www.blog.chaindustry.io";
 
   if (!user) {
     return router.push({
