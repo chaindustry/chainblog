@@ -58,6 +58,7 @@ export default function Home(props) {
           name="google-site-verification"
           content="kg2__dhEGnrztOnTcU5__JFGL2vzk8APpbt9CKiqQwM"
         />
+        <meta name="theme-color" content="#0a0118" />
       </Head>
 
       <main>
