@@ -7,24 +7,22 @@
   margin: 1.23em 0;
   line-height: 34px;
   color: #281451;
-  /* font-family: ; */
 }
 .desc {
   font-size: 17.6px;
-  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
   color: #61427a;
 }
 .img_con {
   position: relative;
-  height: 183px;
+  height: 284px;
   margin-top: 30px;
+  margin-bottom: 27px;
 }
 .img {
-  border-radius: 55px !important;
-  object-position: top !important;
+  border-radius: 20px !important;
+  object-position: center !important;
 }
 .container {
-  padding: 30px 17.7px;
 }
 .top {
   display: flex;
@@ -39,10 +37,11 @@
   text-transform: capitalize;
 }
 .post_content p {
-  color: #2c024d;
-  font-size: 17.8px;
-  line-height: 28px;
-  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  color: var(--grey-10);
+  font-size: 14px;
+  line-height: 230%;
+  font-family: sfLight, sans-serif;
+  margin-bottom: 16px;
 }
 .post_content h1,
 .post_content h2,
@@ -50,17 +49,22 @@
 .post_content h4,
 .post_content h5,
 .post_content h6 {
-  color: #e25f81;
+  color: var(--secondary-50);
   font-weight: 500;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  margin-bottom: 8px;
+}
+.post_content b {
+  color: var(--secondary-30);
 }
 .post_content pre {
-  background-color: #2f2e8b;
+  background-color: var(--primary-80);
   color: #fff;
   overflow-x: scroll;
   border-radius: 6px;
   padding: 24px;
   line-height: 20px;
+  margin-bottom: 1rem;
 }
 .comment_cont,
 .mention_cont {
@@ -74,7 +78,7 @@
 .comment_cont textarea {
   outline: none;
   border: none;
-  font-family: "DM sans", sans-serif;
+
   width: 100%;
   border-bottom: solid 1px #d7d7d7;
   margin-bottom: 10px;
@@ -101,7 +105,6 @@
   color: #fff;
   border-radius: 6px;
   cursor: pointer;
-  font-family: "DM sans", sans-serif;
 }
 .comment_cont:focus-within {
   border-color: #2c024d;
@@ -122,7 +125,7 @@
 .comment_cont input:focus {
   border-color: #281451;
 }
-@media screen and (min-width: 767px) {
+@media screen and (min-width: 768px) {
   .container {
     padding: 54px 3.8vmin;
   }
@@ -139,6 +142,22 @@
     margin-top: 23px;
     margin-bottom: 27px;
   }
+  .post_content img {
+    margin: 50px auto;
+    max-height: 500px;
+    max-width: 500px;
+  }
   .img {
+  }
+}
+@media screen and (min-width: 1024px) {
+  .post_content p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .post_content p {
+    font-size: 18px;
   }
 }

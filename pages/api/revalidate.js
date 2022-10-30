@@ -1,4 +1,4 @@
-export default async function (req, res) {
+export default async function handler(req, res) {
   try {
     await res.revalidate("/");
     return res.json({ revalidated: true });

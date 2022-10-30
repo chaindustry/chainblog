@@ -3,24 +3,31 @@ import Head from "next/head";
 
 import { useEffect, useState } from "react";
 import { baseUrl } from "../baseUrl";
+import Available from "../components/Available";
 import Card from "../components/Card";
+import Join from "../components/Join";
+import Recommended from "../components/Recommended";
+import Title from "../components/Title";
 import classes from "../styles/Home.module.css";
 
 export default function Home(props) {
   const [posts, setPosts] = useState([]);
+  const [recommended, setRecommended] = useState(null);
   useEffect(() => {
-    setPosts(
-      props.posts.data.map((p) => {
-        return {
-          ...p.attributes,
-          id: p.id,
-          img: p?.attributes?.img
-            ? p?.attributes?.img?.data?.attributes?.url
-            : null,
-        };
-      })
-    );
-  }, []);
+    const _posts = props.posts.data.map((p) => {
+      return {
+        ...p.attributes,
+        id: p.id,
+        img: p?.attributes?.img
+          ? p?.attributes?.img?.data?.attributes?.url
+          : null,
+      };
+    });
+    setPosts(_posts);
+    setRecommended(_posts[2]);
+  }, [props.posts.data]);
+
+  console.log(recommended, "rec");
   const title = "The Chaindustry Insider";
   const description =
     "Chaindustry is a DoToEarn network offering value and digital services to it's users and partners.";
@@ -54,19 +61,35 @@ export default function Home(props) {
       </Head>
 
       <main>
-        <section className={classes.intro}>
+        <section
+          className="tracking-[-0.035em] text-[40px] leading-[125.84%] font-sfBold mb-[64px] max-w-[329px] lg:max-w-[561px] 
+        lg:text-[54px] lg:leading-[125.84%] lg:mb-[91px] lg:mt-[180px]
+        xl:text-[72px] xl:leading-[125.84%] xl:mb-[131px] xl:mt-[208px]
+        "
+        >
           {"What's new on Chaindustry"}
         </section>
-        <div className={classes.post_container}>
-          {posts
-            .sort(
-              (a, b) =>
-                new Date(b.createdAt).getTime() -
-                new Date(a.createdAt).getTime()
-            )
-            .map((p, id) => {
-              return <Card key={id} {...p} />;
-            })}
+        {recommended && <Recommended {...recommended} />}
+        <div>
+          <Title
+            title="Latest Articles"
+            sub="Fresh Articles for you"
+            className={"mb-[52px]"}
+          />
+          <section className={classes.post_container}>
+            {posts
+              .slice(0, 6)
+              .sort(
+                (a, b) =>
+                  new Date(b.createdAt).getTime() -
+                  new Date(a.createdAt).getTime()
+              )
+              .map((p, id) => {
+                return <Card key={id} {...p} />;
+              })}
+          </section>
+          <Join />
+          <Available />
         </div>
       </main>
     </div>

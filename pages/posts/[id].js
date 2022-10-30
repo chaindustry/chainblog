@@ -12,6 +12,7 @@ import { useGlobalContext } from "../../context/context";
 import Comments from "../../components/Comments";
 import Mention from "../../components/Mention";
 import { GoMention } from "react-icons/go";
+import { ReadTime } from "../../components/Card";
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
@@ -40,7 +41,7 @@ const Post = ({ post, commentRes }) => {
     setCommenters(commenters_);
     setFiltered(commenters_);
     // console.log(post?.comments?.data, "Data of comme");
-  }, []);
+  }, [post.comments?.data]);
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -117,6 +118,7 @@ const Post = ({ post, commentRes }) => {
   const el = inputRef?.current;
   const cursorPosition = el?.selectionStart;
   console.log(cursorPosition, "Curs pos");
+  let childP = "[&>p]";
   return (
     <>
       <Script
@@ -139,7 +141,6 @@ const Post = ({ post, commentRes }) => {
       <article className={classes.container}>
         <header>
           <div className={classes.top}>
-            <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
             {post?.tags && (
               <div className={classes.tag_container}>
                 {post.tags.map((t, id) => (
@@ -153,8 +154,37 @@ const Post = ({ post, commentRes }) => {
           {/* {post.updatedAt !== post.createdAt && (
           <p>{moment(post.updatedAt).format("MMM DD, YYYY [at] hh:mm:a")}</p>
         )} */}
-          <h1 className={classes.title}>{post.title}</h1>
-          <p className={classes.desc}>{post.description}</p>
+          <h1
+            className={`
+              tracking-[-0.055em] text-[26px] font-sfMedium leading-[145.34%] mb-[20px]
+              lg:text-[34px] lg:mb-[30px]
+              xl:text-[44px] xl:mb-[40px]
+              `}
+          >
+            {post.title}
+          </h1>
+          <div
+            className="text-grey-30 font-sfLight text-[14px] tracking-[-0.025em] leading-[20.25px] 
+          md:flex md:gap-4 md:!text-[16px]
+          lg:gap-[40px] lg:!text-[18px]
+          xl:!text-[20px]"
+          >
+            <div
+              className="flex gap-4 mb-[15px] md:mb-0
+            lg:gap-[40px]
+            "
+            >
+              {" "}
+              <span>
+                by{" "}
+                <span className="text-white">
+                  {post.author || "Chaindustry"}
+                </span>{" "}
+              </span>
+              <span>{moment(post.createdAt).format("Do MMMM, YYYY")}</span>
+            </div>
+            <ReadTime content={post?.content} />
+          </div>
         </header>
         {post.img && (
           <div className={classes.img_con}>
@@ -163,11 +193,23 @@ const Post = ({ post, commentRes }) => {
               src={`${post.img}`}
               layout="fill"
               objectFit="cover"
+              placeholder="blur"
+              blurDataURL={post.img}
+              objectPosition={"center"}
+              alt="Cover"
             />
           </div>
         )}
+        <p
+          className="text-grey-10 leading-[240%] mb-[60px] text-[14px] font-sfLight
+          lg:text-[16px]
+        xl:text-[18px]
+        "
+        >
+          {post.description}
+        </p>
         <section
-          className={classes.post_content}
+          className={`${classes.post_content}`}
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
         <Comments comments={comments} />

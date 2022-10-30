@@ -1,12 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+
+@font-face {
+  font-family: sf;
+  src: url(./sfpro/SF-Pro-Text-Regular.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+0020-007F; /* The bare minimum for the English Language */
+}
+@font-face {
+  font-family: sf;
+  src: url(./sfpro/SF-Pro-Text-Regular.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+00A0-00FF, U+0100-017F;
+}
+@font-face {
+  font-family: sfBold;
+  src: url(./sfpro/SF-Pro-Text-Heavy.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+0020-007F; /* The bare minimum for the English Language */
+}
+@font-face {
+  font-family: sfBold;
+  src: url(./sfpro/SF-Pro-Text-Heavy.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+00A0-00FF, U+0100-017F;
+}
+@font-face {
+  font-family: sfMedium;
+  src: url(./sfpro/SF-Pro-Text-Medium.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+0020-007F; /* The bare minimum for the English Language */
+}
+@font-face {
+  font-family: sfMedium;
+  src: url(./sfpro/SF-Pro-Text-Medium.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+00A0-00FF, U+0100-017F;
+}
+@font-face {
+  font-family: sfSemiBold;
+  src: url(./sfpro/SF-Pro-Text-Semibold.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+0020-007F; /* The bare minimum for the English Language */
+}
+@font-face {
+  font-family: sfSemiBold;
+  src: url(./sfpro/SF-Pro-Text-Semibold.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+00A0-00FF, U+0100-017F;
+}
+@font-face {
+  font-family: sfLight;
+  src: url(./sfpro/SF-Pro-Text-Light.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+0020-007F; /* The bare minimum for the English Language */
+}
+@font-face {
+  font-family: sfLight;
+  src: url(./sfpro/SF-Pro-Text-Light.otf) format("opentype");
+  font-style: normal;
+  unicode-range: U+00A0-00FF, U+0100-017F;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: sf, sans-serif;
   /* font-family: "Jost", sans-serif; */
+  --primary-0: #f9f5fe;
+  --primary-10: #e4d3fd;
+  --primary-20: #c5a3fa;
+  --primary-30: #a772f8;
+  --primary-40: #8842f5;
+  --primary-50: #6810f2;
+  --primary-60: #540ac7;
+  --primary-70: #400896;
+  --primary-80: #2b0566;
+  --primary-90: #170335;
+  --primary-100: #0a0118;
+  --secondary-0: #fef6f8;
+  --secondary-10: #fdd8e2;
+  --secondary-20: #feaec3;
+  --secondary-30: #f881a0;
+  --secondary-40: #ed5a80;
+  --secondary-50: #de3561;
+  --secondary-60: #c11f49;
+  --secondary-70: #951839;
+  --secondary-80: #691128;
+  --secondary-90: #3d0a17;
+  --secondary-100: #120307;
+  --grey-0: #faf9fa;
+  --grey-10: #dddbe1;
+  --grey-20: #c3bfca;
+  --grey-30: #a9a3b3;
+  --grey-40: #90879b;
+  --grey-50: #776e84;
+  --grey-60: #5d5667;
+  --grey-70: #443f4b;
+  --grey-80: #2b272f;
+  --grey-90: #19171c;
+  --grey-100: #0d0c0e;
+  --success-0: #e5f7ed;
+  --success-50: #00a04a;
+  --success-100: #113924;
+  --warning-0: #f7eed6;
+  --warning-50: #ce9a13;
+  --warning-100: #372a06;
+  --error-0: #f4d7da;
+  --error-50: #ed2e45;
+  --error-100: #6e2931;
+  --d2e-engage: #c9ffc5;
+  --d2e-chat: #fed5bd;
+  --d2e-freelance: #ffe3d3;
+  --d2e-stream: #fbd3ff;
+  --d2e-promote: #ffe3d3;
+  --d2e-predict: #ffe3d3;
+  --d2e-learn: #e8eaff;
+  --d2e-sleep: #ffea9f;
+  --d2e-refer: #b7f4f8;
+  --d2e-leaderboard: #e4d3fd;
+  color: #fff;
 }
 
 a {
@@ -22,6 +140,19 @@ a {
   min-height: 100vh;
 }
 
+.track-2 {
+  letter-spacing: -0.02em;
+}
+.track-3 {
+  letter-spacing: -0.03em;
+}
+.p_title {
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 /* @media screen and (min-width: 700px) {
   .view {
     padding: 0 5.6vmin;
