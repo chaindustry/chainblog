@@ -1,5 +1,5 @@
 const authObserver = (user, router) => {
-  const testpath = "http://localhost:3001";
+  const testpath = "http://localhost:3002";
   const productionUrl = "https://www.blog.chaindustry.io";
 
   if (!user) {
@@ -12,7 +12,7 @@ const authObserver = (user, router) => {
         referrer: "chainblog",
         return_url: `${
           process.env.NODE_ENV !== "production"
-            ? "http://localhost:3000"
+            ? "http://localhost:3001"
             : productionUrl
         }${router.asPath}`,
         request_type: "auth_token",

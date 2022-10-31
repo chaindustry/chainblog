@@ -13,12 +13,14 @@ import Comments from "../../components/Comments";
 import Mention from "../../components/Mention";
 import { GoMention } from "react-icons/go";
 import { ReadTime } from "../../components/Card";
+import AppButton from "../../components/button/AppButton";
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
   const [commenters, setCommenters] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
   const post_image = post?.img ? post.img?.data?.attributes?.url : null;
   post = { ...post, img: post_image };
   const md = new Markdown({
@@ -42,6 +44,7 @@ const Post = ({ post, commentRes }) => {
     setFiltered(commenters_);
     // console.log(post?.comments?.data, "Data of comme");
   }, [post.comments?.data]);
+
   const refreshData = () => {
     router.replace(router.asPath);
   };
@@ -50,6 +53,7 @@ const Post = ({ post, commentRes }) => {
     const postId = router.query.id;
     e.preventDefault();
     const url = `${baseUrl}/api/comments`;
+    setLoading(true);
     axios
       .post(url, {
         data: {
@@ -71,9 +75,9 @@ const Post = ({ post, commentRes }) => {
       })
       .then((resp) => {
         refreshData();
-        console.log(resp.data);
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err);
       });
   };
@@ -212,6 +216,9 @@ const Post = ({ post, commentRes }) => {
           className={`${classes.post_content}`}
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
+        <div className={classes.cmt_length}>
+          {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
+        </div>
         <Comments comments={comments} />
         {!auth && (
           <div>
@@ -221,7 +228,7 @@ const Post = ({ post, commentRes }) => {
         )}
         {auth && (
           <>
-            Comment as {user?.firstname}
+            <div className={classes.cmt_info}>Comment as {user?.firstname}</div>
             <form onSubmit={addComment} className={classes.comment_cont}>
               <div className={classes.mention_cont}>
                 <Mention
@@ -237,6 +244,8 @@ const Post = ({ post, commentRes }) => {
               </div>
 
               <textarea
+                aria-required
+                disabled={loading}
                 // contentEditable
                 ref={inputRef}
                 value={comment}
@@ -248,7 +257,14 @@ const Post = ({ post, commentRes }) => {
                 placeholder="Add a comment"
                 required
               />
-              <div className={classes.bottom}>
+              <AppButton
+                disabled={loading}
+                type="submit"
+                sxclass={classes.submit_btn}
+                label={loading ? "Submitting..." : "Post Comment"}
+                variant="secondary"
+              />
+              {/* <div className={classes.bottom}>
                 <div
                   onClick={() => {
                     setOpenMention(!openMention);
@@ -263,7 +279,7 @@ const Post = ({ post, commentRes }) => {
                   <GoMention />
                 </div>
                 <button type="submit">Send</button>
-              </div>
+              </div> */}
             </form>
           </>
         )}

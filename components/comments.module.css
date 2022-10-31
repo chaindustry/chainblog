@@ -1,26 +1,45 @@
 .avatar {
   display: flex;
-  align-items: center;
-  font-size: 13px;
-  font-weight: bold;
+
   overflow: hidden;
-  border-radius: 100px;
+}
+.name {
+  font-size: 16px;
+  line-height: 19px;
+  /* identical to box height */
+
+  letter-spacing: -0.045em;
+
+  color: #ffffff;
+  margin-bottom: 8px;
 }
 
 .avatar_img {
-  height: 35px;
-  width: 35px;
+  height: 32px;
+  width: 32px;
   position: relative;
-  margin: 10px;
+  margin-right: 1em;
+  background-color: #efefef;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.date {
+  font-size: 12px;
+  line-height: 145.34%;
+  /* or 23px */
+
+  letter-spacing: -0.025em;
+  color: var(--grey-30);
+  font-family: sfLight, sans-serif;
 }
 .comment {
-  color: #797979;
-  line-height: 30px;
   font-size: 14px;
+  line-height: 208.5%;
+  color: var(--grey-10);
+  font-family: sfLight, sans-serif;
 }
 .comment_main {
   padding: 20px 0;
-  border-bottom: solid 1px #d7d7d7;
 }
 .comment_main:last-child {
   margin-bottom: 40px;
