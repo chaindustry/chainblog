@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
+import Available from "../components/Available";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { AppProvider, useGlobalContext } from "../context/context";
@@ -90,7 +91,9 @@ function MyApp({ Component, pageProps }) {
           <AuthProvider>
             <Component {...pageProps} />
           </AuthProvider>
+          <Available />
         </div>
+
         <Footer />
       </div>
     </AppProvider>

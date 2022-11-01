@@ -14,6 +14,7 @@ import Mention from "../../components/Mention";
 import { GoMention } from "react-icons/go";
 import { ReadTime } from "../../components/Card";
 import AppButton from "../../components/button/AppButton";
+import Available from "../../components/Available";
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
@@ -142,7 +143,7 @@ const Post = ({ post, commentRes }) => {
         id={post.id}
       />
 
-      <article className={classes.container}>
+      <article className={`${classes.container} mb-[113px] lg:mb-[285px]`}>
         <header>
           <div className={classes.top}>
             {post?.tags && (
@@ -244,6 +245,7 @@ const Post = ({ post, commentRes }) => {
               </div>
 
               <textarea
+                spellCheck
                 aria-required
                 disabled={loading}
                 // contentEditable

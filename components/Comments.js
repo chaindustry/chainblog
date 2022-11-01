@@ -75,7 +75,6 @@ const Comments = ({ comments }) => {
   return (
     <div className={classes.container}>
       {comments_.map((c, id) => {
-        console.log(c);
         return (
           <div key={id} className={classes.comment_main}>
             <Comment user={c.user} {...c} />
