@@ -4,4 +4,4 @@ export const baseUrl =
   // process.env.NODE_ENV === "production"
   // ? "http://localhost:1337"
   // :
-  "https://chainblog-api.herokuapp.com";
+  "https://chaindustry-blog.herokuapp.com";
