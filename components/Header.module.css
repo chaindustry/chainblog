@@ -11,7 +11,18 @@
 .links a:first-child {
   margin-right: 13px;
 }
-
+.input_container {
+  border: solid 1px transparent;
+  transition: 0.1s;
+}
+.input_container:focus-within {
+  border-color: #fff;
+  transition: 0.1s;
+}
+.input_container:hover:not(:focus-within) {
+  border-color: #ffffff50;
+  transition: 0.1s;
+}
 @media screen and (min-width: 700px) {
   /* .logo {
     width: 200px;

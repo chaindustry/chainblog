@@ -15,6 +15,7 @@ import { GoMention } from "react-icons/go";
 import { ReadTime } from "../../components/Card";
 import AppButton from "../../components/button/AppButton";
 import Available from "../../components/Available";
+import { useScroll, useSpring, motion } from "framer-motion";
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
@@ -123,7 +124,8 @@ const Post = ({ post, commentRes }) => {
   const el = inputRef?.current;
   const cursorPosition = el?.selectionStart;
   console.log(cursorPosition, "Curs pos");
-  let childP = "[&>p]";
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress);
   return (
     <>
       <Script
@@ -144,6 +146,24 @@ const Post = ({ post, commentRes }) => {
       />
 
       <article className={`${classes.container} mb-[113px] lg:mb-[285px]`}>
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            right: "0",
+            left: "0",
+            zIndex: "50",
+          }}
+        >
+          <motion.div
+            style={{
+              scaleX: scrollYProgress,
+              height: "3px",
+              background: "var(--secondary-50)",
+              transformOrigin: "left",
+            }}
+          ></motion.div>
+        </div>
         <header>
           <div className={classes.top}>
             {post?.tags && (

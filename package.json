@@ -21,6 +21,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
+    "react-spinners": "^0.13.6",
     "react-syntax-highlighter": "^15.5.0",
     "words-to-time-converter": "^1.1.0"
   },

@@ -63,7 +63,10 @@ const Footer = () => {
       });
   };
   return (
-    <footer className="app-footer md:py-[50px] lg:pt-[133px] lg:pb-[123px]">
+    <footer
+      className="app-footer md:py-[50px] lg:pt-[133px] lg:pb-[123px]"
+      id="footer"
+    >
       <div className=" lg:flex lg:justify-between container relative z-[1] mx-auto p-5 xl:max-w-[1185px] 2xl:max-w-[1285px] lg:p-8">
         <div className="mb-[60px] lg:mb-0">
           <div
