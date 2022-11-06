@@ -90,7 +90,6 @@ export default function Home(props) {
               })}
           </section>
           <Join />
-          <Available />
         </div>
       </main>
     </div>

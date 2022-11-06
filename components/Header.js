@@ -7,10 +7,13 @@ import AppButton from "./button/AppButton";
 const Header = () => {
   const Search = () => (
     <div className="lg:flex lg:gap-4">
-      <div className="rounded-[10px] bg-white/10 p-[18px] h-[60px] flex items-center mb-4 lg:mb-0 lg:h-auto backdrop-blur-md">
+      <div
+        className="rounded-[10px]  bg-white/10 p-[18px] h-[60px] flex items-center mb-4 lg:mb-0 lg:h-auto backdrop-blur-md 
+       focus-within:border"
+      >
         <input
           placeholder="Search Articles"
-          className="bg-transparent outline-none w-full placeholder:text-grey-20 tracking-[-0.02em] text-base"
+          className="bg-transparent outline-none w-full mr-2 placeholder:text-grey-20 tracking-[-0.02em] text-base"
         />
         <SearchNormal1 size={20} />
       </div>

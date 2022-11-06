@@ -217,17 +217,18 @@ const Post = ({ post, commentRes }) => {
           className={`${classes.post_content}`}
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
+        {/* Line 220 to 289 removed pending main launch*/}
         <div className={classes.cmt_length}>
           {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
         </div>
         <Comments comments={comments} />
-        {!auth && (
+        {/* {!auth && (
           <div>
             <div> Login to post a comment</div>
             <button onClick={login}>Login Now</button>
           </div>
-        )}
-        {auth && (
+        )} */}
+        {/* {auth && (
           <>
             <div className={classes.cmt_info}>Comment as {user?.firstname}</div>
             <form onSubmit={addComment} className={classes.comment_cont}>
@@ -282,9 +283,9 @@ const Post = ({ post, commentRes }) => {
                 </div>
                 <button type="submit">Send</button>
               </div> */}
-            </form>
-          </>
-        )}
+        {/* </form> */}
+        {/* </> */}
+        {/* )}  */}
       </article>
     </>
   );

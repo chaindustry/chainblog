@@ -13,7 +13,7 @@ const Footer = () => {
       },
       { label: "Our services", path: "https://www.chaindustry.io/services" },
       { label: "Team", path: "https://www.chaindustry.io/team" },
-      { label: "Blog", path: "https://www.blog.chaindustry.io" },
+      // { label: "Blog", path: "https://www.blog.chaindustry.io" },
       { label: "FAQs", path: "https://www.chaindustry.io/faqs" },
     ],
     misc: [
