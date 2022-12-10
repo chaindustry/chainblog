@@ -1,11 +1,14 @@
 import Head from "next/head";
 import Script from "next/script";
 import { baseUrl } from "../baseUrl";
+import replaceSpecChars from "../utils/replaceSpecChars";
 
 const Seo = (fullSeo) => {
   const fullImgPath = fullSeo.shareImage;
   // const url = 'blocg.chaindustry.io'
-  const url = `https://www.blog.chaindustry.io/posts/${fullSeo?.id}`;
+  const url = `https://www.blog.chaindustry.io/posts/${replaceSpecChars(
+    fullSeo?.metaTitle
+  )}?pid=${fullSeo?.id}`;
   console.log(fullImgPath, "ff", fullSeo);
   return (
     <Head>
