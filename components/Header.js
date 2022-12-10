@@ -7,6 +7,7 @@ import AppButton from "./button/AppButton";
 import { AnimatePresence, motion } from "framer-motion";
 import { ClipLoader, SyncLoader } from "react-spinners";
 import { Router, useRouter } from "next/router";
+import replaceSpecChars from "../utils/replaceSpecChars";
 const Search = () => {
   const [sq, setSq] = useState(""); //Search query
   function debounce(fn, delay) {
@@ -27,7 +28,7 @@ const Search = () => {
     const value = e.target.value.trim();
     if (value.startsWith(" ")) return console.log("No preceeding whitespaces");
     if (!value) return setSearchResult([]);
-    console.log("API call", new Date().getTime());
+    console.log("Initializing search", new Date().getTime());
     setLoading(true);
     fetch(`/api/search-posts?q=${value.toLowerCase()}`)
       .then((res) => res.json())
@@ -39,7 +40,7 @@ const Search = () => {
           setError(data.error);
           setSearchResult([]);
         }
-        console.log(data);
+        // console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -119,9 +120,15 @@ const Search = () => {
                   `;
               }
             };
-            console.log(displayHandler());
+            // console.log(displayHandler());
             return (
-              <Link href={`/posts/${post?._id}`} key={id}>
+              <Link
+                href={{
+                  pathname: `/posts/${replaceSpecChars(post?.title)}`,
+                  query: { pid: post._id },
+                }}
+                key={id}
+              >
                 <a className="cursor-pointer">
                   <div>
                     {/* {query_type[result?.matcher]} */}

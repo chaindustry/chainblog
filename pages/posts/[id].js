@@ -313,16 +313,18 @@ const Post = ({ post, commentRes }) => {
 
 export default Post;
 
-export const getServerSideProps = async ({ params }) => {
-  console.log(params, "Params");
-  const res = await axios.get(`${baseUrl}/api/posts/${params.id}?populate=*`);
+export const getServerSideProps = async ({ params, ...ctx }) => {
+  console.log(ctx, "Params");
+  const res = await axios.get(
+    `${baseUrl}/api/posts/${ctx?.query?.pid}?populate=*`
+  );
   const comments = await axios.get(`${baseUrl}/api/comments?populate=*`);
   const [postRes, commentRes] = await Promise.all([
     res.data.data,
     comments.data.data,
   ]);
   // const data = res.data.data;
-  console.log(postRes);
+  // console.log(postRes);
   if (!postRes) {
     return {
       notFound: true,
@@ -332,15 +334,11 @@ export const getServerSideProps = async ({ params }) => {
     ...postRes.attributes,
     id: postRes.id,
   };
-  console.log(commentRes.filter((c) => c.attributes.post.id === params.id));
+  // console.log(commentRes.filter((c) => c.attributes.post.id === params.id));
   return {
     props: {
       post,
       commentRes,
-      // : commentRes?.filter(
-      //   (c) => c?.attributes?.post?.data?.id === params.id
-      // ),
-      // res: stringified,
     },
   };
 };

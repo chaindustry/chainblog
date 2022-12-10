@@ -6,6 +6,7 @@ import Link from "next/link";
 import { baseUrl } from "../baseUrl";
 import { Clock } from "iconsax-react";
 import { wordsToMinutes, wordsToSeconds } from "words-to-time-converter";
+import replaceSpecChars from "../utils/replaceSpecChars";
 
 export const ReadTime = ({ content }) => {
   const minRead = wordsToMinutes(content);
@@ -31,10 +32,16 @@ const Card = ({
   imgxs,
   type,
 }) => {
-  console.log(`${img}`);
+  // console.log(`${img}`);
+  const uri = replaceSpecChars(title);
   return (
     <Link
-      href={`/posts/${id}`}
+      href={{
+        pathname: `/posts/${uri}`,
+        query: {
+          pid: id,
+        },
+      }}
       // as={`posts/${title.toLowerCase().replace(/ /g, "-")}`}
     >
       <a data-type={type} className={`${classes.card} ${xs}`}>
