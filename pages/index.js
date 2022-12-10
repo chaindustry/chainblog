@@ -79,12 +79,12 @@ export default function Home(props) {
           />
           <section className={classes.post_container}>
             {posts
-              .slice(0, 6)
               .sort(
                 (a, b) =>
                   new Date(b.createdAt).getTime() -
                   new Date(a.createdAt).getTime()
               )
+              // .slice(0, 6)
               .map((p, id) => {
                 return <Card key={id} {...p} />;
               })}
