@@ -28,13 +28,13 @@ const Seo = (fullSeo) => {
           <meta name="twitter:description" content={fullSeo.metaDescription} />
         </>
       )}
-      {fullSeo.shareImage && (
-        <>
-          <meta property="og:image" content={fullImgPath} />
-          <meta name="twitter:image" content={fullImgPath} />
-          <meta name="image" content={fullImgPath} />
-        </>
-      )}
+      {/* {fullSeo.shareImage && ( */}
+      <>
+        <meta property="og:image" content={fullImgPath} />
+        <meta name="twitter:image" content={fullImgPath} />
+        <meta name="image" content={fullImgPath} />
+      </>
+      {/* )} */}
       {fullSeo.article && <meta property="og:type" content="article" />}
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
