@@ -8,13 +8,16 @@ const Footer = () => {
   let links = {
     company: [
       {
-        label: "Why Chaindustry",
-        path: "https://www.chaindustry.io/why-chaindustry",
+        label: "About Us",
+        path: "https://www.chaindustry.io/about",
       },
-      { label: "Our services", path: "https://www.chaindustry.io/services" },
-      { label: "Team", path: "https://www.chaindustry.io/team" },
+      {
+        label: "Our services",
+        path: "https://www.chaindustry.io/about#services",
+      },
+      { label: "Team", path: "https://www.chaindustry.io/about#team" },
       // { label: "Blog", path: "https://www.blog.chaindustry.io" },
-      { label: "FAQs", path: "https://www.chaindustry.io/faqs" },
+      { label: "FAQs", path: "https://www.chaindustry.io/#faqs" },
     ],
     misc: [
       { label: "Terms of use", path: "https://www.chaindustry.io/terms" },

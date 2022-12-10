@@ -1,6 +1,7 @@
 import React from "react";
 
 import { baseUrl } from "../baseUrl";
+import replaceSpecChars from "../utils/replaceSpecChars";
 
 const EXTERNAL_DATA_URL = `${baseUrl}/api/posts?populate=*`;
 
@@ -15,10 +16,12 @@ const createSitemap = (posts) => `<?xml version="1.0" encoding="UTF-8"?>
        <lastmod>${new Date().toISOString()}</lastmod>
      </url>
         ${posts
-          .map(({ id }) => {
+          .map(({ id, attributes }) => {
             return `
                 <url>
-                    <loc>${`https://www.blog.chaindustry.io/posts/${id}`}</loc>
+                    <loc>${`https://www.blog.chaindustry.io/posts/${replaceSpecChars(
+                      attributes?.title
+                    )}?pid=${id}`}</loc>
                       <lastmod>${new Date().toISOString()}</lastmod>
                 </url>
             `;
