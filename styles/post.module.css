@@ -42,6 +42,7 @@
   line-height: 230%;
   font-family: sfLight, sans-serif;
   margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 .post_content h1,
 .post_content h2,
@@ -53,23 +54,27 @@
   margin-bottom: 8px;
   letter-spacing: -0.03em;
 }
+.post_content strong {
+  font-family: sfSemibold;
+  letter-spacing: -0.03em;
+}
 .post_content h6 {
-  font-size: 16px;
+  font-size: 14px;
 }
 .post_content h5 {
-  font-size: 18px;
+  font-size: 16px;
 }
 .post_content h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 .post_content h3 {
-  font-size: 22px;
+  font-size: 20px;
 }
 .post_content h2 {
-  font-size: 24px;
+  font-size: 22px;
 }
 .post_content h1 {
-  font-size: 26px;
+  font-size: 24px;
 }
 .post_content b {
   color: var(--secondary-30);
