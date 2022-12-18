@@ -11,21 +11,16 @@ import Title from "../components/Title";
 import classes from "../styles/Home.module.css";
 
 export default function Home(props) {
-  const [posts, setPosts] = useState([]);
-  const [recommended, setRecommended] = useState(null);
-  useEffect(() => {
-    const _posts = props.posts.data.map((p) => {
-      return {
-        ...p.attributes,
-        id: p.id,
-        img: p?.attributes?.img
-          ? p?.attributes?.img?.data?.attributes?.url
-          : null,
-      };
-    });
-    setPosts(_posts);
-    setRecommended(_posts[2]);
-  }, [props.posts.data]);
+  const posts = props?.posts?.data.map((p) => {
+    return {
+      ...p.attributes,
+      id: p.id,
+      img: p?.attributes?.img
+        ? p?.attributes?.img?.data?.attributes?.url
+        : null,
+    };
+  });
+  const recommended = posts[3];
 
   console.log(recommended, "rec");
   const title = "The Chaindustry Insider";
