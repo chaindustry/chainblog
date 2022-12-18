@@ -189,23 +189,27 @@ const Search = () => {
         </div>
 
         <div className="flex gap-4">
-          <AppButton
-            onClick={() =>
-              router.replace({
-                pathname: router.pathname,
-                hash: "footer",
-                query: router.query,
-              })
-            }
-            fullWidth
-            variant="secondary"
-            sxclass={
-              "!rounded-[10px] !whitespace-nowrap lg:!h-[60px] lg:!px-[32px] lg:!text-base"
-            }
-            label="Subscribe"
-          />
+          <Link
+            href={{
+              pathname: router.pathname,
+              hash: "footer",
+              query: router.query,
+            }}
+          >
+            <a className="w-full">
+              <AppButton
+                fullWidth
+                variant="secondary"
+                sxclass={
+                  "!rounded-[10px] !whitespace-nowrap lg:!h-[60px] lg:!px-[32px] lg:!text-base"
+                }
+                label="Subscribe"
+              />
+            </a>
+          </Link>
+
           <Link href={`#`}>
-            <a>
+            <a className="w-full">
               <AppButton
                 fullWidth
                 variant="ghost"
