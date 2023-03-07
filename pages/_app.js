@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import NextProgress from "next-progress";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import { useEffect } from "react";
@@ -88,6 +89,12 @@ function MyApp({ Component, pageProps }) {
         </div>
         <div className="container relative z-[1] mx-auto p-5 xl:max-w-[1185px] 2xl:max-w-[1285px] lg:p-8">
           <Header />
+          <NextProgress
+            options={{ showSpinner: false }}
+            height={"4px"}
+            delay={500}
+            color="#DE3561"
+          />
           <AuthProvider>
             <Component {...pageProps} />
           </AuthProvider>

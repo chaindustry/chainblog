@@ -6,11 +6,13 @@ import { baseUrl } from "../baseUrl";
 import Available from "../components/Available";
 import Card from "../components/Card";
 import Join from "../components/Join";
+import Paginate from "../components/Paginate";
 import Recommended from "../components/Recommended";
 import Title from "../components/Title";
 import classes from "../styles/Home.module.css";
 
 export default function Home(props) {
+  const pagination = props?.posts?.meta?.pagination;
   const posts = props?.posts?.data.map((p) => {
     return {
       ...p.attributes,
@@ -22,7 +24,7 @@ export default function Home(props) {
   });
   const recommended = posts[3];
 
-  console.log(recommended, "rec");
+  // console.log(recommended, "rec");
   const title = "The Chaindustry Insider";
   const description =
     "Chaindustry is a DoToEarn network offering value and digital services to it's users and partners.";
@@ -84,6 +86,11 @@ export default function Home(props) {
                 return <Card key={id} {...p} />;
               })}
           </section>
+          <Paginate
+            page={pagination?.page}
+            pageCount={pagination?.pageCount}
+            perPage={pagination?.pageSize}
+          />
           <Join />
         </div>
       </main>
@@ -91,8 +98,14 @@ export default function Home(props) {
   );
 }
 
-export const getStaticProps = async () => {
-  const res = await axios.get(`${baseUrl}/api/posts?populate=*`);
+export const getServerSideProps = async ({ query }) => {
+  const page = query?.page;
+  // console.log(query);
+  const res = await axios.get(
+    `${baseUrl}/api/posts?populate=*&pagination[pageSize]=12&sort[0]=createdAt:desc&pagination[page]=${
+      page || 1
+    }`
+  );
   const posts = res.data;
   // const posts = res.data.data.map((p) => {
   //   return {
