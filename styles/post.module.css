@@ -169,8 +169,9 @@
 .container img {
   object-fit: cover;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 4px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .comment_cont input {
   width: 100%;

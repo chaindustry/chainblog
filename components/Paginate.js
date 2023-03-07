@@ -16,7 +16,7 @@ const Paginate = ({ pageCount, perPage, page }) => {
     return (
       <div
         className={`cursor-pointer h-[40px] select-none  cursor-pointer transition hover:bg-secondary-40
-         hover:text-white mr-[2px] last:mr-0 w-[40px] flex justify-center items-center text-[13px]  ${
+         hover:text-white mr-[2px] last:mr-0 w-[40px] flex rounded-[8px] justify-center items-center text-[13px]  ${
            active && "text-secondary-50  font-sfBold border border-secondary-50"
          }`}
         {...props}
@@ -66,7 +66,7 @@ const Paginate = ({ pageCount, perPage, page }) => {
   // console.log(arrayedPages, arrayToMap());
   if (pageNumbers < 2) return "";
   return (
-    <div>
+    <div className="mt-4">
       <div className="flex justify-center">
         {page !== 1 && (
           <Navigator

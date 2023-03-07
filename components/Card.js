@@ -51,7 +51,7 @@ const Card = ({
               className={classes.post_img}
               layout="fill"
               src={`${img}`}
-              priority
+              loading="lazy"
               placeholder="blur"
               blurDataURL={img}
               objectFit="cover"
