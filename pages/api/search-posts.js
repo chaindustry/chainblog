@@ -6,7 +6,7 @@ export default function handler(req, res) {
   let arrStr = arrQuery.filter((a) => a.length > 3);
 
   try {
-    let url = `${baseUrl}/api/posts?populate=*`;
+    let url = `${baseUrl}/api/posts?populate=*&pagination[limit]=100000000`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
