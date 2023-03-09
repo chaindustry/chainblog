@@ -287,9 +287,9 @@ const Post = ({ post, commentRes }) => {
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
         {/* Line 220 to 289 removed pending main launch*/}
-        <div className={classes.cmt_length}>
+        {/* <div className={classes.cmt_length}>
           {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
-        </div>
+        </div> */}
         <Comments comments={comments} />
         <Join />
         {/* {!auth && (
