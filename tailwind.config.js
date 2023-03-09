@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        ll: "1270px",
+      },
       fontFamily: {
         sf: ["sf", "sans-serif"],
         sfMedium: ["sfMedium", "sans-serif"],
