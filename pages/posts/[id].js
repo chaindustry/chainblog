@@ -24,6 +24,7 @@ import Link from "next/link";
 import { FaTelegramPlane } from "react-icons/fa";
 import Join from "../../components/Join";
 import replaceSpecChars from "../../utils/replaceSpecChars";
+import BreadCrumb from "../../components/BreadCrumb";
 
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
@@ -192,17 +193,13 @@ const Post = ({ post, commentRes }) => {
           ></motion.div>
         </div>
         <header>
-          <div className={classes.top}>
-            {post?.tags && (
-              <div className={classes.tag_container}>
-                {post.tags.map((t, id) => (
-                  <span className={classes.tag} key={`chaindustry_tags_${id}`}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+          <BreadCrumb
+            crumbs={[
+              { label: "Home", path: "/" },
+              { label: "Article", path: "#" },
+            ]}
+          />
+
           {/* {post.updatedAt !== post.createdAt && (
           <p>{moment(post.updatedAt).format("MMM DD, YYYY [at] hh:mm:a")}</p>
         )} */}
