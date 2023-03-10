@@ -154,6 +154,26 @@ const Post = ({ post, commentRes }) => {
       url: `https://t.me/share/url?url=${url}/`,
     },
   ];
+  const ShareLinks = () => {
+    return (
+      <>
+        {shareLinks.map((link, id) => {
+          return (
+            <Link href={link.url} key={id}>
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                className="inline-flex items-center !text-primary-90 mr-4 text-[21px] bg-[#bcb3c4] h-[32px] w-[32px]
+                     rounded-full justify-center xl:mr-0 xl:mb-6 xl:flex xl:h-[40px] xl:w-[40px]"
+              >
+                {link.icon}
+              </a>
+            </Link>
+          );
+        })}
+      </>
+    );
+  };
   return (
     <>
       <Script
@@ -238,20 +258,7 @@ const Post = ({ post, commentRes }) => {
         <div className="mt-[43px] xl:flex xl:-ml-[75px]">
           <div className="mb-[26px] xl:mb-0 xl:mr-[35px]">
             <div className="xl:flex xl:flex-col">
-              {shareLinks.map((link, id) => {
-                return (
-                  <Link href={link.url} key={id}>
-                    <a
-                      target={"_blank"}
-                      rel="noreferrer"
-                      className="inline-flex items-center !text-primary-90 mr-4 text-[21px] bg-[#bcb3c4] h-[32px] w-[32px]
-                     rounded-full justify-center xl:mr-0 xl:mb-6 xl:flex xl:h-[40px] xl:w-[40px]"
-                    >
-                      {link.icon}
-                    </a>
-                  </Link>
-                );
-              })}
+              <ShareLinks />
             </div>
           </div>
           <section>
@@ -287,6 +294,8 @@ const Post = ({ post, commentRes }) => {
         {/* <div className={classes.cmt_length}>
           {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
         </div> */}
+        {/* <h2>Share this post</h2> */}
+        <ShareLinks />
         <Comments comments={comments} />
         <Join />
         {/* {!auth && (
