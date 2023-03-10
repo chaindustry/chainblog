@@ -16,6 +16,7 @@ import { ReadTime } from "../../components/Card";
 import {
   RiDiscordFill,
   RiFacebookFill,
+  RiGlobeFill,
   RiTelegramFill,
   RiTwitterFill,
 } from "react-icons/ri";
@@ -25,6 +26,9 @@ import { FaTelegramPlane } from "react-icons/fa";
 import Join from "../../components/Join";
 import replaceSpecChars from "../../utils/replaceSpecChars";
 import BreadCrumb from "../../components/BreadCrumb";
+import AppButton from "../../components/button/AppButton";
+import { SiLinkedin, SiYoutube } from "react-icons/si";
+import { HiOutlineGlobeAlt } from "react-icons/hi";
 
 const Markdown = require("markdown-it");
 const Post = ({ post, commentRes }) => {
@@ -152,6 +156,43 @@ const Post = ({ post, commentRes }) => {
     {
       icon: <FaTelegramPlane />,
       url: `https://t.me/share/url?url=${url}/`,
+    },
+  ];
+  const socialMediaLinks = [
+    {
+      label: "Website",
+      icon: <HiOutlineGlobeAlt />,
+      url: "https://www.chaindustry.io",
+    },
+    {
+      label: "Twitter",
+      icon: <RiTwitterFill />,
+      url: "https://www.twitter.com/chaindustry",
+    },
+    {
+      label: "Telegram",
+      icon: <FaTelegramPlane />,
+      url: "https://t.me/chaindustrynetwork",
+    },
+    {
+      label: "DoToEarn Telegram",
+      icon: <FaTelegramPlane />,
+      url: "https://t.me/chaindustrydotoearn",
+    },
+    {
+      label: "Discord",
+      icon: <RiDiscordFill />,
+      url: "https://discord.gg/v4bw6fHPeP",
+    },
+    {
+      label: "LinkedIn",
+      icon: <SiLinkedin />,
+      url: "https://www.linkedin.com/mwlite/company/chaindustry",
+    },
+    {
+      label: "Youtube",
+      icon: <SiYoutube />,
+      url: "https://youtube.com/c/Chaindustry",
     },
   ];
   const ShareLinks = () => {
@@ -290,12 +331,56 @@ const Post = ({ post, commentRes }) => {
           className={`${classes.post_content}`}
           dangerouslySetInnerHTML={{ __html: derivedHtml }}
         />
+        <div className="mb-8 border-t border-t-primary-80 pt-6">
+          <p className="mb-4 track-2">Share post</p>
+          <ShareLinks />
+        </div>
+        <div className="my-6">
+          <p className="mb-4 track-2">
+            Follow us on our social media handles below:
+          </p>
+          <ul>
+            {socialMediaLinks.map((link, id) => {
+              return (
+                <li key={id} className="mb-2">
+                  <Link href={link.url}>
+                    <a
+                      rel="noreferrer"
+                      target={"_blank"}
+                      className="font-sfLight inline-flex items-center text-[14px] tracking-[-0.03em]"
+                    >
+                      <span className="mr-2 text-primary-30">{link.icon}</span>{" "}
+                      <span className="">{link.label}</span>
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <div className="mt-14">
+          <p className="text-center tracking-[-0.03em] mb-6 leading-[150%] text-[20px] font-sfSemibold">
+            Stay subscribed to get updates on our services.
+          </p>
+          <div className="flex justify-center">
+            <Link
+              href={{
+                pathname: replaceSpecChars(post?.title),
+                query: { pid: post?.id },
+                hash: "footer",
+              }}
+            >
+              <a>
+                <AppButton label="Subscribe" variant="secondary" />
+              </a>
+            </Link>
+          </div>
+        </div>
         {/* Line 220 to 289 removed pending main launch*/}
         {/* <div className={classes.cmt_length}>
           {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
         </div> */}
-        {/* <h2>Share this post</h2> */}
-        <ShareLinks />
+
         <Comments comments={comments} />
         <Join />
         {/* {!auth && (
