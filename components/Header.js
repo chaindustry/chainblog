@@ -161,7 +161,7 @@ const Search = () => {
   return (
     <div className="relative">
       <div className="lg:flex lg:gap-4 relative z-[1]">
-        <div className="relative sticky top-0 z-[2]">
+        <div className=" sticky top-0 z-[2]">
           <div
             className={`rounded-[10px] bg-white/10  h-[60px] flex items-center mb-4 lg:mb-0 lg:h-auto backdrop-blur-md 
   ${classes.input_container}`}

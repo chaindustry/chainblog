@@ -31,11 +31,16 @@ import { SiLinkedin, SiYoutube } from "react-icons/si";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
 
 const Markdown = require("markdown-it");
+
 const Post = ({ post, commentRes }) => {
   const [comments, setComments] = useState([]);
+
   const [commenters, setCommenters] = useState([]);
+
   const [filtered, setFiltered] = useState([]);
+
   const [comment, setComment] = useState("");
+
   const [loading, setLoading] = useState(false);
   const post_image = post?.img ? post.img?.data?.attributes?.url : null;
   post = { ...post, img: post_image };
@@ -43,23 +48,10 @@ const Post = ({ post, commentRes }) => {
     html: true,
   });
   const derivedHtml = md.render(post.content);
+
   const router = useRouter();
-  const [openMention, setOpenMention] = useState(false);
+
   const { user, auth } = useGlobalContext();
-  const [mentioned, setMentioned] = useState([]);
-  useEffect(() => {
-    const comments_ = post.comments?.data?.map((c) => {
-      return {
-        ...c.attributes,
-        id: c.id,
-      };
-    });
-    setComments(comments_);
-    const commenters_ = comments_.map((c) => c.user);
-    setCommenters(commenters_);
-    setFiltered(commenters_);
-    // console.log(post?.comments?.data, "Data of comme");
-  }, [post.comments?.data]);
 
   const refreshData = () => {
     router.replace(router.asPath);
@@ -174,11 +166,11 @@ const Post = ({ post, commentRes }) => {
       icon: <FaTelegramPlane />,
       url: "https://t.me/chaindustrynetwork",
     },
-    {
-      label: "DoToEarn Telegram",
-      icon: <FaTelegramPlane />,
-      url: "https://t.me/chaindustrydotoearn",
-    },
+    // {
+    //   label: "DoToEarn Telegram",
+    //   icon: <FaTelegramPlane />,
+    //   url: "https://t.me/chaindustrydotoearn",
+    // },
     {
       label: "Discord",
       icon: <RiDiscordFill />,
@@ -381,7 +373,7 @@ const Post = ({ post, commentRes }) => {
           {comments.length} {`Comment${comments.length > 1 ? "s" : ""}`}
         </div> */}
 
-        <Comments comments={comments} />
+        {/* <Comments comments={comments} /> */}
         <Join />
         {/* {!auth && (
           <div>
@@ -455,15 +447,17 @@ const Post = ({ post, commentRes }) => {
 export default Post;
 
 export const getServerSideProps = async ({ params, ...ctx }) => {
-  console.log(ctx, "Params");
+  // console.log(ctx, "Params");
   const res = await axios.get(
     `${baseUrl}/api/posts/${ctx?.query?.pid}?populate=*`
   );
   const comments = await axios.get(`${baseUrl}/api/comments?populate=*`);
+
   const [postRes, commentRes] = await Promise.all([
     res.data.data,
     comments.data.data,
   ]);
+
   // const data = res.data.data;
   // console.log(postRes);
   if (!postRes) {
@@ -475,6 +469,8 @@ export const getServerSideProps = async ({ params, ...ctx }) => {
     ...postRes.attributes,
     id: postRes.id,
   };
+
+  // console.log(, "Comments");
   // console.log(commentRes.filter((c) => c.attributes.post.id === params.id));
   return {
     props: {

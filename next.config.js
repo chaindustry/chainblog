@@ -16,6 +16,7 @@ const nextConfig = {
       "chainblog-api.herokuapp.com",
       // "chainblog-api.herokuapp.comhttps",
       "res.cloudinary.com",
+      "chainblog-strapi-aws-s3-images-bucket.s3.eu-north-1.amazonaws.com",
     ],
   },
 };
