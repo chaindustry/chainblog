@@ -15,7 +15,7 @@ const Paginate = ({ pageCount, perPage, page }) => {
   const Navigator = ({ children, active, ...props }) => {
     return (
       <div
-        className={`cursor-pointer h-[40px] select-none  cursor-pointer transition hover:bg-secondary-40
+        className={`h-[40px] select-none  cursor-pointer transition hover:bg-secondary-40
          hover:text-white mr-[2px] last:mr-0 w-[40px] flex rounded-[8px] justify-center items-center text-[13px]  ${
            active && "text-secondary-50  font-sfBold border border-secondary-50"
          }`}
