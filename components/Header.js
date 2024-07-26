@@ -208,7 +208,7 @@ const Search = () => {
             </a>
           </Link>
 
-          <Link href={`#`}>
+          <Link href={`https://app.chaindustry.io/signup`}>
             <a className="w-full">
               <AppButton
                 fullWidth

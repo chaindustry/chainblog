@@ -34,7 +34,7 @@ const Footer = () => {
       },
       {
         icon: <FaTelegramPlane size={21} />,
-        path: "https://t.me/chaindustrynetwork",
+        path: "https://t.me/chaindustry",
       },
     ],
   };
