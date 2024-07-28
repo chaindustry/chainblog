@@ -164,7 +164,7 @@ const Post = ({ post, commentRes }) => {
     {
       label: "Telegram",
       icon: <FaTelegramPlane />,
-      url: "https://t.me/chaindustrynetwork",
+      url: "https://t.me/chaindustry",
     },
     // {
     //   label: "DoToEarn Telegram",
