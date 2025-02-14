@@ -54,7 +54,7 @@ const Card = ({
               loading="lazy"
               placeholder="blur"
               blurDataURL={img}
-              objectFit="cover"
+              objectFit="contain"
               objectPosition="top"
               alt="Post Cover"
             />

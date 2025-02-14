@@ -10,7 +10,8 @@
 .img {
   position: relative;
   width: 100%;
-  height: 239px;
+  max-height: 239px;
+  /* border: 1px solid red; */
   user-select: none;
   border-radius: 20px;
   margin-bottom: 24px;
