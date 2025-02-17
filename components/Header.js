@@ -247,10 +247,10 @@ const Search = () => {
 const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerStyle = {
-    backgroundColor: scrollPosition > 250 ? "#0A0118" : "transparent", 
+    backgroundColor: scrollPosition > 200 ? "#0A0118" : "transparent", 
     transition: "background-color 0.3s ease", 
-    backdropFilter: scrollPosition > 250 ? "blur(10px)" : "none",
-    borderBottom: scrollPosition > 250 ? "1px solid #240754" : "none",
+    backdropFilter: scrollPosition > 200 ? "blur(10px)" : "none",
+    borderBottom: scrollPosition > 200 ? "1px solid #240754" : "none",
   };
   useEffect(() => {
     const handleScroll = () => {

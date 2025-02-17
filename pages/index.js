@@ -74,7 +74,7 @@ export default function Home(props) {
             sub="Fresh Articles for you"
             className={"mb-[52px]"}
           />
-          <section className={classes.post_container}>
+          <section className={`${classes.post_container} md:grid-cols-2`}>
             {posts
               .sort(
                 (a, b) =>

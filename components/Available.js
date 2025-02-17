@@ -12,7 +12,7 @@ const Available = () => {
     };
     return (
       <div
-        className="border-[0.717884px] rounded-[17.2292px] border-[#ffffff20] px-[23px] py-[11px] inline-flex items-center cursor-pointer
+        className="border-[0.717884px]  rounded-[17.2292px] border-[#ffffff20] px-[23px] py-[11px] inline-flex items-center cursor-pointer
       lg:py-[16px] lg:px-[32px] lg:border-[1px] lg:rounded-[24px]
       "
       >
@@ -54,7 +54,7 @@ const Available = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ amount: "some", fallback: true }}
-      className="bg-[#170337] px-[20px] pt-[40px] rounded-[20px] mb-[200px] max-w-[1184px] mx-auto
+      className="bg-[#170337] px-[20px] pt-[40px] rounded-[20px] mb-[200px] items-center flex flex-col  max-w-[1184px] mx-auto
     md:flex md:justify-between md:mb-[148px]
     lg:pt-[55px] lg:px-[60px] lg:rounded-[48px]
     xl:pt-[65px] xl:px-[121px] 
@@ -63,12 +63,13 @@ const Available = () => {
       <div
         className="mb-[44.67px]
       md:flex-1
-      lg:mb-[124px]
+      lg:mb-[124px]     
+      flex flex-col items-center justify-center
       "
       >
         <h3
           className="font-sfBold mb-[24px] leading-[125.84%] text-[32px] tracking-[-0.06em] max-w-[225px]
-        lg:mt-[45px] lg:text-[48px] lg:leading-[125.84%] lg:tracking-[-0.06em] lg:max-w-[404px] lg:mb-[55px]
+        lg:mt-[45px] lg:text-[48px] lg:text-center lg:leading-[125.84%] lg:tracking-[-0.06em] lg:max-w-[404px] lg:mb-[55px]
         "
         >
           Available on mobile devices
@@ -89,8 +90,8 @@ const Available = () => {
       "
       >
         <div
-          className="absolute w-[237.04px] h-[436px] 
-        lg:h-[664px] lg:w-[361px]"
+          className="w-[237.04px] h-[436px]
+        lg:h-[1000px] lg:w-[500px] transform translate-y-1/2 -mt-[200px] lg:-mt-[500px]"
         >
           <Image
             src="/mainapp.png"
