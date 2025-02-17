@@ -54,7 +54,7 @@ const Available = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ amount: "some", fallback: true }}
-      className="bg-[#170337] px-[20px] pt-[40px] rounded-[20px] mb-[200px] items-center flex flex-col  max-w-[1184px] mx-auto
+      className="bg-[#170337] px-[20px] pt-[40px] rounded-[20px] mb-[200px] items-center flex flex-col lg:flex-row max-w-[1184px] mx-auto
     md:flex md:justify-between md:mb-[148px]
     lg:pt-[55px] lg:px-[60px] lg:rounded-[48px]
     xl:pt-[65px] xl:px-[121px] 
@@ -91,7 +91,7 @@ const Available = () => {
       >
         <div
           className="w-[237.04px] h-[436px]
-        lg:h-[1000px] lg:w-[500px] transform translate-y-1/2 -mt-[200px] lg:-mt-[500px]"
+        lg:h-[1000px] lg:w-[380px] transform translate-y-[30%]  lg:translate-y-[20%] -mt-[120px] lg:-mt-[100px]"
         >
           <Image
             src="/mainapp.png"
