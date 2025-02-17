@@ -86,10 +86,10 @@ const Footer = () => {
           </div>
 
           <form
-            className="bg-white/10 rounded-[1em] p-[2em] max-w-[284px]"
+            className="bg-white/10 rounded-[1em] p-[2em] w-full max-w-[400px]"
             onSubmit={subscribe}
           >
-            <h2 className="max-w-[190px] text-[18px] leading-[150%] tracking-[-0.05em] font-sfSemibold mb-[35px]">
+            <h2 className="w-full lg:w-[fit-content] text-[18px] leading-[150%] tracking-[-0.05em] font-sfSemibold mb-[35px]">
               Subscribe now for updates
             </h2>
             <div className="flex items-center">
