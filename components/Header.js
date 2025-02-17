@@ -21,6 +21,8 @@ const Search = () => {
   const [showSearchPanel, setShowSearchPanel] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isScroll, setIsScrool] = useState(false);
+  
   const [error, setError] = useState("");
   const handleSearch = (e) => {
     setError("");
@@ -46,6 +48,7 @@ const Search = () => {
         console.log(err);
       });
   };
+ 
   useEffect(() => {
     const closePanelOnRouteChange = () => {
       setShowSearchPanel(false);
@@ -53,6 +56,8 @@ const Search = () => {
     Router.events.on("routeChangeStart", closePanelOnRouteChange);
     return () => Router.events.off("routeChangeStart", closePanelOnRouteChange);
   }, []);
+
+
   const SearchResult = () => {
     return (
       <div className="p-4 flex-1 relative h-full">
@@ -238,12 +243,31 @@ const Search = () => {
     </div>
   );
 };
+
 const Header = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const headerStyle = {
+    backgroundColor: scrollPosition > 250 ? "#0A0118" : "transparent", 
+    transition: "background-color 0.3s ease", 
+    backdropFilter: scrollPosition > 250 ? "blur(10px)" : "none",
+    borderBottom: scrollPosition > 250 ? "1px solid #240754" : "none",
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <header
       className={
-        "flex z-[2] flex-col mb-[61px] lg:flex-row lg:justify-between lg:items-center lg:sticky lg:top-4 "
+        `flex z-[2] flex-col mb-[61px] lg:flex-row lg:justify-between lg:items-center lg:sticky lg:top-0 lg:py-4 lg:px-10 px-5 py-4`
       }
+      style={headerStyle}
     >
       <div className="flex items-center justify-between mb-[38.9px] lg:mb-0">
         <Link href="/">

@@ -87,8 +87,8 @@ function MyApp({ Component, pageProps }) {
       "
           ></div>
         </div>
-        <div className="container relative z-[1] mx-auto p-5 xl:max-w-[1185px] 2xl:max-w-[1285px] lg:p-8">
           <Header />
+        <div className="container relative z-[1] mx-auto p-5 xl:max-w-[1185px] 2xl:max-w-[1285px] lg:p-8">
           <NextProgress
             options={{ showSpinner: false }}
             height={"4px"}
