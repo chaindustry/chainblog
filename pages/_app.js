@@ -76,7 +76,7 @@ function MyApp({ Component, pageProps }) {
       <div className="bg-primary-100 relative">
         <div className="overflow-hidden absolute min-h-[100vh] inset-0">
           <div
-            className="absolute h-[579px] w-[294px] absolute top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]
+            className="absolute h-[579px] w-[294px]  top-[99px] border-[128px] border-primary-50 saf-blur left-[-250px] blur-[241.5px]
       lg:top-[249px] lg:left-0 lg:h-[831px] lg:w-[422px]
       "
           ></div>

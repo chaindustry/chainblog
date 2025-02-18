@@ -45,16 +45,16 @@ const Card = ({
       // as={`posts/${title.toLowerCase().replace(/ /g, "-")}`}
     >
       <a data-type={type} className={`${classes.card} ${xs}`}>
-        <div className={`${classes.img} ${imgxs}`}>
+        <div className={`${classes.img} ${imgxs} rounded-md`}>
           {img ? (
             <Image
-              className={classes.post_img}
+              className={`${classes.post_img} rounded-md w-full`}
               layout="fill"
               src={`${img}`}
               loading="lazy"
               placeholder="blur"
               blurDataURL={img}
-              objectFit="contain"
+              objectFit="cover"
               objectPosition="top"
               alt="Post Cover"
             />

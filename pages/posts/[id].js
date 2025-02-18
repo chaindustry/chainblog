@@ -294,9 +294,9 @@ const Post = ({ post, commentRes }) => {
               <ShareLinks />
             </div>
           </div>
-          <section className="w-ful bg-red-70">
+          <section className="w-full">
             {post.img && (
-              <div className={`${classes.img_con} bg-green-5 w-full`}>
+              <div className={`${classes.img_con} w-full`}>
                 <Image
                   className={classes.img}
                   src={`${post.img}`}
